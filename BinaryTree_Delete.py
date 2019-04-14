@@ -24,3 +24,43 @@ class nodes:
         print(self.d)
         if(self.r):
             self.r.printTheTree()
+
+    def delete(self,data):
+        if(self is None):
+            return None
+        if(data<self.d):
+            self.l=self.l.delete(data)
+        elif(data>self.d):
+            self.r=self.r.delete(data)
+        else:
+            if(self.l is None):
+                temp=self.r
+                self=None
+                return temp
+            elif(self.r is None):
+                temp=self.l
+                self=None
+                return temp
+        temp=self.minValueNode(self.r)
+        self.d=temp.d
+        self.r=self.r.delete(temp.d)
+        return self
+    def minValueNode(slef,node):
+        current=node
+        while(current.l is not None):
+            current=current.l
+        return current
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
